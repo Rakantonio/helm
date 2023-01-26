@@ -64,8 +64,8 @@ export APP_PASSWORD=$(kubectl get secret --namespace default my-release-nextclou
 ```
 ```bash=
 echo $APP_PASSWORD
-> changeme
 ```
+> changeme
 ```bash=
 $ helm upgrade my-release nextcloud/nextcloud \
     --set nextcloud.password=$APP_PASSWORD,nextcloud.host=$APP_HOST,service.type=ClusterIP,mariadb.enabled=false,externalDatabase.user=nextcloud,externalDatabase.database=nextcloud,externalDatabase.host=YOUR_EXTERNAL_DATABASE_HOST
