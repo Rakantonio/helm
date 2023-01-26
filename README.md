@@ -33,30 +33,30 @@ helm install my-release nextcloud/nextcloud
 ```
 
 > NAME: my-release
-LAST DEPLOYED: Thu Jan 26 09:11:56 2023
-NAMESPACE: default
-STATUS: deployed
-REVISION: 1
-TEST SUITE: None
-NOTES:
-#######################################################################################################
-## WARNING: You did not provide an external database host in your 'helm install' call                ##
-## Running Nextcloud with the integrated sqlite database is not recommended for production instances ##
-#######################################################################################################
-
-For better performance etc. you have to configure nextcloud with a resolvable database
-host. To configure nextcloud to use and external database host:
-
-
-1. Complete your nextcloud deployment by running:
-
-  export APP_HOST=127.0.0.1
-  export APP_PASSWORD=$(kubectl get secret --namespace default my-release-nextcloud -o jsonpath="{.data.nextcloud-password}" | base64 --decode)
-
-  ## PLEASE UPDATE THE EXTERNAL DATABASE CONNECTION PARAMETERS IN THE FOLLOWING COMMAND AS NEEDED ##
-
-  helm upgrade my-release nextcloud/nextcloud \
-    --set nextcloud.password=$APP_PASSWORD,nextcloud.host=$APP_HOST,service.type=ClusterIP,mariadb.enabled=false,externalDatabase.user=nextcloud,externalDatabase.database=nextcloud,externalDatabase.host=YOUR_EXTERNAL_DATABASE_HOST
+> LAST DEPLOYED: Thu Jan 26 09:11:56 2023
+> NAMESPACE: default
+> STATUS: deployed
+> REVISION: 1
+> TEST SUITE: None
+> NOTES:
+> #######################################################################################################
+> ## WARNING: You did not provide an external database host in your 'helm install' call                ##
+> ## Running Nextcloud with the integrated sqlite database is not recommended for production instances ##
+> #######################################################################################################
+> 
+> For better performance etc. you have to configure nextcloud with a resolvable database
+> host. To configure nextcloud to use and external database host:
+> 
+> 
+> 1. Complete your nextcloud deployment by running:
+> 
+>   export APP_HOST=127.0.0.1
+>   export APP_PASSWORD=$(kubectl get secret --namespace default my-release-nextcloud -o jsonpath="{.data.nextcloud-password}" | base64 --decode)
+> 
+>   ## PLEASE UPDATE THE EXTERNAL DATABASE CONNECTION PARAMETERS IN THE FOLLOWING COMMAND AS NEEDED ##
+> 
+>   helm upgrade my-release nextcloud/nextcloud \
+>     --set nextcloud.password=$APP_PASSWORD,nextcloud.host=$APP_HOST,service.type=ClusterIP,mariadb.enabled=false,externalDatabase.user=nextcloud,externalDatabase.database=nextcloud,externalDatabase.host=YOUR_EXTERNAL_DATABASE_HOST
 
 ```bash=
 export APP_HOST=127.0.0.1
