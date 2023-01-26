@@ -31,8 +31,8 @@ helm repo add nextcloud https://nextcloud.github.io/helm/
 ```bash=
 helm install my-release nextcloud/nextcloud
 ```
-```
-NAME: my-release
+
+> NAME: my-release
 LAST DEPLOYED: Thu Jan 26 09:11:56 2023
 NAMESPACE: default
 STATUS: deployed
@@ -57,7 +57,7 @@ host. To configure nextcloud to use and external database host:
 
   helm upgrade my-release nextcloud/nextcloud \
     --set nextcloud.password=$APP_PASSWORD,nextcloud.host=$APP_HOST,service.type=ClusterIP,mariadb.enabled=false,externalDatabase.user=nextcloud,externalDatabase.database=nextcloud,externalDatabase.host=YOUR_EXTERNAL_DATABASE_HOST
-```
+
 ```bash=
 export APP_HOST=127.0.0.1
 export APP_PASSWORD=$(kubectl get secret --namespace default my-release-nextcloud -o jsonpath="{.data.nextcloud-password}" | base64 --decode)
