@@ -26,10 +26,12 @@ kind create cluster
 ## Ajouter et déployer nextcloud avec Helm Chart
 ```bash=
 helm repo add nextcloud https://nextcloud.github.io/helm/
+```
 > "nextcloud" has been added to your repositories
-
+```bash=
 helm install my-release nextcloud/nextcloud
-
+```
+```
 NAME: my-release
 LAST DEPLOYED: Thu Jan 26 09:11:56 2023
 NAMESPACE: default
@@ -55,14 +57,16 @@ host. To configure nextcloud to use and external database host:
 
   helm upgrade my-release nextcloud/nextcloud \
     --set nextcloud.password=$APP_PASSWORD,nextcloud.host=$APP_HOST,service.type=ClusterIP,mariadb.enabled=false,externalDatabase.user=nextcloud,externalDatabase.database=nextcloud,externalDatabase.host=YOUR_EXTERNAL_DATABASE_HOST
-
+```
+```bash=
 echo $APP_PASSWORD
 > changeme
 ```
 ```bash=
 $ helm upgrade my-release nextcloud/nextcloud \
     --set nextcloud.password=$APP_PASSWORD,nextcloud.host=$APP_HOST,service.type=ClusterIP,mariadb.enabled=false,externalDatabase.user=nextcloud,externalDatabase.database=nextcloud,externalDatabase.host=YOUR_EXTERNAL_DATABASE_HOST
-    
+```
+```
 Release "my-release" has been upgraded. Happy Helming!
 NAME: my-release
 LAST DEPLOYED: Thu Jan 26 09:15:46 2023
