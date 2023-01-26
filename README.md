@@ -70,31 +70,31 @@ echo $APP_PASSWORD
 $ helm upgrade my-release nextcloud/nextcloud \
     --set nextcloud.password=$APP_PASSWORD,nextcloud.host=$APP_HOST,service.type=ClusterIP,mariadb.enabled=false,externalDatabase.user=nextcloud,externalDatabase.database=nextcloud,externalDatabase.host=YOUR_EXTERNAL_DATABASE_HOST
 ```
-```
-Release "my-release" has been upgraded. Happy Helming!
-NAME: my-release
-LAST DEPLOYED: Thu Jan 26 09:15:46 2023
-NAMESPACE: default
-STATUS: deployed
-REVISION: 2
-TEST SUITE: None
-NOTES:
-1. Get the nextcloud URL by running:
 
-  export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=nextcloud" -o jsonpath="{.items[0].metadata.name}")
-  echo http://127.0.0.1:8080/
-  kubectl port-forward $POD_NAME 8080:80
-
-2. Get your nextcloud login credentials by running:
-
-  echo User:     admin
-  echo Password: $(kubectl get secret --namespace default my-release-nextcloud -o jsonpath="{.data.nextcloud-password}" | base64 --decode)
-```
+> Release "my-release" has been upgraded. Happy Helming!
+> NAME: my-release
+> LAST DEPLOYED: Thu Jan 26 09:15:46 2023
+> NAMESPACE: default
+> STATUS: deployed
+> REVISION: 2
+> TEST SUITE: None
+> NOTES:
+> 1. Get the nextcloud URL by running:
+> 
+>   export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=nextcloud" -o jsonpath="{.items[0].metadata.name}")
+>   echo http://127.0.0.1:8080/
+>   kubectl port-forward $POD_NAME 8080:80
+> 
+> 2. Get your nextcloud login credentials by running:
+> 
+>   echo User:     admin
+>   echo Password: $(kubectl get secret --namespace default my-release-nextcloud -o jsonpath="{.data.nextcloud-password}" | base64 --decode)
 
 ## Se connecter a Nextcloud
 
-```
+```bash=
 $ kubectl port-forward $POD_NAME 8080:80
+
 Forwarding from 127.0.0.1:8080 -> 80
 Forwarding from [::1]:8080 -> 80
 Handling connection for 8080
