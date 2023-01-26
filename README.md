@@ -59,6 +59,10 @@ host. To configure nextcloud to use and external database host:
     --set nextcloud.password=$APP_PASSWORD,nextcloud.host=$APP_HOST,service.type=ClusterIP,mariadb.enabled=false,externalDatabase.user=nextcloud,externalDatabase.database=nextcloud,externalDatabase.host=YOUR_EXTERNAL_DATABASE_HOST
 ```
 ```bash=
+export APP_HOST=127.0.0.1
+export APP_PASSWORD=$(kubectl get secret --namespace default my-release-nextcloud -o jsonpath="{.data.nextcloud-password}" | base64 --decode)
+```
+```bash=
 echo $APP_PASSWORD
 > changeme
 ```
